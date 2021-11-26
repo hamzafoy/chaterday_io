@@ -4,12 +4,23 @@ body {
 }
 
 
+h1, h2, h3, p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+
+li {
+    list-style-type: none;
+}
+
+
 #body {
     display: flex;
     flex-direction: column;
     height: 100vh;
     width: 100%;
-    background-color: #E2EF95;
+    background-color: #ECECEA;
 }
 
 
@@ -21,23 +32,45 @@ body {
 
 
 .title__heading {
-    margin-block-start: 0;
-    margin-block-end: 0;
     font-family: 'Mohave', sans-serif;
     font-size: 2.25rem;
+    color: #374243;
 }
 
 
 .title__desc {
     font-family: 'Titillium Web', sans-serif;
     font-size: 1.15em;
+    color: #374243;
 }
 
 
 #chatbox {
     align-self: center;
-    height: 30vh;
+    height: 50vh;
     width: 75%;
-    background-color: #B2A7F1;
-    border: 5px double #7460E6;
+    background-color: #EAD7DC;
+    border: 5px double #9383EC;
+}
+
+
+.chatbox__text {
+    width: 100%;
+    margin: 1vh 0;
+    padding: 2vh 0;
+}
+
+
+.chatbox__text:nth-child(even) {
+    background-color: #D5AFB9;
+}
+
+
+.chatbox__text:nth-child(odd) {
+    background-color: #F8F2F3;
+}
+
+
+#user-input {
+    align-self: center;
 }
