@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
 
+    <!-- Fonts -->
+
+    <link 
+    rel="preconnect" 
+    href="https://fonts.googleapis.com"
+    >
+    <link 
+    rel="preconnect" 
+    href="https://fonts.gstatic.com" 
+    crossorigin
+    >
+    <link 
+    href="https://fonts.googleapis.com/css2?family=Mohave:wght@300&family=Titillium+Web:wght@600&display=swap" 
+    rel="stylesheet"
+    >
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
     <title>Chaterday Chat</title>
 
 </head>
@@ -22,8 +39,33 @@
             <p class="title__desc">
                 Enter your name to fire up the chatroom!
             </p>
-            
+
         </section>
+
+        <ol id="chatbox">
+
+        </ol>
+
+        <form>
+            
+            <input 
+            type="text"
+            class="user-input__name"
+            />
+
+            <input
+            type="text"
+            class="user-input__msg"
+            />
+
+            <input
+            type="submit"
+            class="user-input__button"
+            />
+
+        </form>
+
+        
 
     </div>
     

@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+#body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background-color: #E2EF95;
+}
+
+
+.chaterday__title {
+    align-self: center;
+    margin: 3vh 0;
+    text-align: center;
+}
+
+
+.title__heading {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-family: 'Mohave', sans-serif;
+    font-size: 2.25rem;
+}
+
+
+.title__desc {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1.15em;
+}
+
+
+#chatbox {
+    align-self: center;
+    height: 30vh;
+    width: 75%;
+    background-color: #B2A7F1;
+    border: 5px double #7460E6;
+}
