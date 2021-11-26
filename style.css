@@ -49,6 +49,7 @@ li {
     align-self: center;
     height: 50vh;
     width: 75%;
+    overflow-y: scroll;
     background-color: #EAD7DC;
     border: 5px double #9383EC;
 }
