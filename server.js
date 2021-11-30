@@ -2,6 +2,7 @@ const express = require('express');
 let app = express();
 const http = require('http');
 let server = http.Server(app);
+const port = process.env.PORT || 8080;
 
 app.use(express.static('client'));
 
@@ -12,6 +13,6 @@ io.on('connection', function(socket) {
     })
 });
 
-server.listen(8080, function() {
+server.listen(port, function() {
     console.log(`Spinning up the chat room!`)
 })
