@@ -80,3 +80,8 @@ li {
     flex-direction: column;
     align-self: center;
 }
+
+
+#user-input label {
+    font-family: 'Titillium Web', sans-serif;
+}
