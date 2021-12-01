@@ -39,6 +39,7 @@ li {
 
 
 .title__desc {
+    margin: 0 25vw;
     font-family: 'Titillium Web', sans-serif;
     font-size: 1.15em;
     color: #374243;
@@ -74,6 +75,8 @@ li {
 }
 
 
-#user-input {
+.chaterday__forms {
+    display: flex;
+    flex-direction: column;
     align-self: center;
 }

@@ -33,11 +33,13 @@
         <section class="chaterday__title">
 
             <h1 class="title__heading">
-                Chatroom
+                Chaterday Chatroom
             </h1>
 
             <p class="title__desc">
-                Enter your name to fire up the chatroom!
+                This app is a work-in-progress, starting as a chatroom application
+                intended for two users and will eventually become a game where two
+                participants can play the popular game hangman.
             </p>
 
         </section>
@@ -53,29 +55,31 @@
             </li>
 
         </ol>
+        
+        <section class="chaterday__forms">
 
-        <form id="user-input">
-            
-            <select 
-            name="participants"
-            class="user-input__name"
-            >
-                <option value="" disabled selected>Select your name</option>
-                <option value="Hamza">Hamza</option>
-                <option value="Mishkat">Mishkat</option>
-            </select>
+            <form id="user-input">
 
-            <input
-            type="text"
-            class="user-input__msg"
-            />
+                <label
+                for="user-input"
+                >
+                    Enter chat message here:
+                </label>
 
-            <input
-            type="submit"
-            class="user-input__button"
-            />
+                <input
+                name="user-input"
+                type="text"
+                class="user-input__msg"
+                />
 
-        </form>
+                <input
+                type="submit"
+                class="user-input__button"
+                />
+
+            </form>
+
+        </section>
 
         <!-- JavaScript Resources -->
         <script src="jquery-3.6.0.min.js"></script>
