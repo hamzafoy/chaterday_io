@@ -13,12 +13,12 @@ $(function() {
         let submittedInput = `<li class="chatbox__text">${username}: ${msgData}</li>`;
         socket.emit('message', submittedInput);
         //chatbox.append(submittedInput);
-        $('.user-input__name').val('');
+        //$('.user-input__name').val('');
         $('.user-input__msg').val('');
     })
 
 });
 
 socket.on('message', function(msg) {
-    $(msg).appendTo('#chatbox');
+    $(msg).hide().appendTo('#chatbox').fadeIn(1000);
 });
