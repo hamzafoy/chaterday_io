@@ -4,6 +4,8 @@ let socket = io();
 $(function() {
 
     let username = prompt('What is your name?');
+    let chatMsgLabel = `<label for="user-input">${username}, enter your message here:</label>`;
+    $(chatMsgLabel).prependTo('#user-input');
 
     $('#user-input').on('submit', function(e) {
         e.preventDefault();
