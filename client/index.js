@@ -3,9 +3,19 @@ let socket = io();
 
 $(function() {
 
-    let username = prompt('What is your name?');
+    let username;
+
+    /* let username = prompt('What is your name?');
     let chatMsgLabel = `<label for="user-input">${username}, enter your message here:</label>`;
-    $(chatMsgLabel).prependTo('#user-input');
+    $(chatMsgLabel).prependTo('#user-input'); */
+
+    $('#username-input').on('submit', function() {
+        let nameData = $('.user-input__name').val();
+        username = nameData;
+        $(this).parent().remove();
+        let chatMsgLabel = `<label for="user-input">${username}, enter your message here:</label>`;
+        $(chatMsgLabel).prependTo('#user-input');
+    })
 
     $('#user-input').on('submit', function(e) {
         e.preventDefault();
