@@ -1,5 +1,15 @@
 let socket = io();
 
+function renderCivilianTime(date) {
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    if (hour > 12) {
+        return `${hour - 12}:${minute}PM`;
+    } else if (hour < 12) {
+        return `${hour}:${minute}AM`;
+    }
+}
+
 
 $(function() {
 
@@ -16,7 +26,9 @@ $(function() {
     $('#user-input').on('submit', function(e) {
         e.preventDefault();
         let msgData = $('.user-input__msg').val();
-        let submittedInput = `<li class="chatbox__text">${username}: ${msgData}</li>`;
+        let today = new Date();
+        let currentTime = renderCivilianTime(today);
+        let submittedInput = `<li class="chatbox__text">${username}: ${msgData} - ${currentTime}</li>`;
         socket.emit('message', submittedInput);
         $('.user-input__msg').val('');
     })
