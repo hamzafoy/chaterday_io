@@ -24,7 +24,7 @@ li {
 }
 
 
-.chaterday__title {
+#chaterday__title {
     align-self: center;
     margin: 3vh 0;
     text-align: center;
@@ -75,7 +75,7 @@ li {
 }
 
 
-.chaterday__forms {
+#chaterday__chat-input {
     display: flex;
     flex-direction: column;
     align-self: center;
@@ -87,7 +87,7 @@ li {
 }
 
 
-#greeting-modal {
+#chaterday__modal {
     display: flex;
     flex-direction: column;
     justify-content: center;
