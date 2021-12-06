@@ -7,10 +7,12 @@ let app = express();
 const http = require('http');
 let server = http.Server(app);
 const port = process.env.PORT || 8080;
-const apiKey = process.env.API_KEY;
-const spreadsheetId = process.env.SPREADSHEET_ID;
-const clientId = process.env.CLIENT_ID;
+const { google } = require('googleapis');
 const scope = process.env.SCOPE;
+const auth = new google.auth.GoogleAuth({
+    keyFile: "keys.json",
+    scopes: scope
+})
 
 app.use(express.static('client'));
 
@@ -18,6 +20,9 @@ let io = require('socket.io')(server);
 io.on('connection', function(socket) {
     socket.on('message', function(msg) {
         io.emit('message', msg);
+    })
+    socket.on('rawMessage', function(data) {
+        io.emit('rawMessage', data);
     })
 });
 

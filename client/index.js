@@ -29,7 +29,9 @@ $(function() {
         let today = new Date();
         let currentTime = renderCivilianTime(today);
         let submittedInput = `<li class="chatbox__text">${username}: ${msgData} - ${currentTime}</li>`;
+        let rawMsg = `${username}: ${msgData} - ${currentTime}`
         socket.emit('message', submittedInput);
+        socket.emit('rawMessage', rawMsg);
         $('.user-input__msg').val('');
     })
 
@@ -38,3 +40,7 @@ $(function() {
 socket.on('message', function(msg) {
     $(msg).hide().appendTo('#chatbox').fadeIn(1000);
 });
+
+socket.on('rawMessage', function(data) {
+    console.log(data);
+})
