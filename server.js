@@ -7,6 +7,10 @@ let app = express();
 const http = require('http');
 let server = http.Server(app);
 const port = process.env.PORT || 8080;
+const apiKey = process.env.API_KEY;
+const spreadsheetId = process.env.SPREADSHEET_ID;
+const clientId = process.env.CLIENT_ID;
+const scope = process.env.SCOPE;
 
 app.use(express.static('client'));
 
@@ -19,4 +23,4 @@ io.on('connection', function(socket) {
 
 server.listen(port, function() {
     console.log(`Spinning up the chat room!`)
-})
+});
