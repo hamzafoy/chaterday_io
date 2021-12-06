@@ -41,6 +41,6 @@ socket.on('message', function(msg) {
     $(msg).hide().appendTo('#chatbox').fadeIn(1000);
 });
 
-socket.on('rawMessage', function(data) {
-    console.log(data);
+socket.on('rawMessage', function(rawmsg) {
+    console.log(rawmsg);
 })
