@@ -9,8 +9,8 @@ require('dotenv').config()
 let server = http.Server(app);
 const port = process.env.PORT || 8080;
 const { google } = require('googleapis');
-const scope = process.env.SCOPE;
-const spreadsheetId = process.env.SPREADSHEET_ID;
+//const scope = process.env.SCOPE;
+
 
 /*::::::::::::::::::::::::::::::::::::::::
 :::::::  Async Handler Function  :::::::::
@@ -36,9 +36,49 @@ io.on('connection', function(socket) {
     })
     socket.on('rawMessage', function(rawmsg) {
         io.emit('rawMessage', rawmsg);
+        console.log(rawmsg);
+        asyncHandler(async(req, res) => {
+            const auth = new google.auth.GoogleAuth({
+                keyFile: "keys.json",
+                scopes: scope
+            });
+            const authClientObject =  auth.getClient();
+            const googleSheetsInstance = google.sheets({ version: "v4", auth: authClientObject });
+             googleSheetsInstance.spreadsheets.values.append({
+                auth,
+                spreadsheetId,
+                range: "Sheet1!A",
+                valueInputOption: 'RAW',
+                insertDataOption: 'INSERT_ROWS',
+                resource: {
+                    values: rawmsg
+                }
+            });
+        })
     })
 });
+
+/* asyncHandler(async(req, res) => {
+    const auth = new google.auth.GoogleAuth({
+        keyFile: "keys.json",
+        scopes: scope
+    });
+    const authClientObject =  auth.getClient();
+    const googleSheetsInstance = google.sheets({ version: "v4", auth: authClientObject });
+     googleSheetsInstance.spreadsheets.values.append({
+        auth,
+        spreadsheetId,
+        range: "Sheet1!A",
+        valueInputOption: 'RAW',
+        insertDataOption: 'INSERT_ROWS',
+        resource: {
+            values: rawmsg
+        }
+    });
+}) */
 
 server.listen(port, function() {
     console.log(`Spinning up the chat room!`)
 });
+
+module.exports = server;
