@@ -33,7 +33,6 @@ function asyncHandler(cb) {
 
 app.use(express.static('client'));
 
-
 io.on('connection', function(socket) {
     socket.on('message', function(msg) {
         io.emit('message', msg);
@@ -61,46 +60,6 @@ io.on('connection', function(socket) {
             });
         })
 });
-
-/* app.post('/form', asyncHandler(async(req, res) => {
-    io.sockets.emit("rawMessage", rawmsg);
-    console.log(rawmsg);
-    const auth = new google.auth.GoogleAuth({
-        keyFile: "keys.json",
-        scopes: scope
-    });
-    const authClientObject =  auth.getClient();
-    const googleSheetsInstance = google.sheets({ version: "v4", auth: authClientObject });
-     googleSheetsInstance.spreadsheets.values.append({
-        auth,
-        spreadsheetId,
-        range: "Sheet1!A",
-        valueInputOption: 'RAW',
-        insertDataOption: 'INSERT_ROWS',
-        resource: {
-            values: rawmsg
-        }
-    });
-})) */
-
-/* asyncHandler(async(req, res) => {
-    const auth = new google.auth.GoogleAuth({
-        keyFile: "keys.json",
-        scopes: scope
-    });
-    const authClientObject =  auth.getClient();
-    const googleSheetsInstance = google.sheets({ version: "v4", auth: authClientObject });
-     googleSheetsInstance.spreadsheets.values.append({
-        auth,
-        spreadsheetId,
-        range: "Sheet1!A",
-        valueInputOption: 'RAW',
-        insertDataOption: 'INSERT_ROWS',
-        resource: {
-            values: rawmsg
-        }
-    });
-}) */
 
 server.listen(port, function() {
     console.log(`Spinning up the chat room!`)
