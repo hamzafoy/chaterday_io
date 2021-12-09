@@ -13,7 +13,7 @@ let server = http.Server(app);
 let io = require('socket.io')(server);
 const port = process.env.PORT || 8080;
 const { google } = require('googleapis');
-const scope = process.env.SCOPE;
+const scope = 'https://www.googleapis.com/auth/spreadsheets';
 
 
 /*::::::::::::::::::::::::::::::::::::::::
