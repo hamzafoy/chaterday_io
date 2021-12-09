@@ -14,6 +14,7 @@ let io = require('socket.io')(server);
 const port = process.env.PORT || 8080;
 const { google } = require('googleapis');
 const scope = 'https://www.googleapis.com/auth/spreadsheets';
+const googleCreds = process.env.GOOGLE_APPLICATIONS_CREDENTIALS || 'keys.json';
 
 
 /*::::::::::::::::::::::::::::::::::::::::
@@ -41,7 +42,7 @@ io.on('connection', function(socket) {
         socket.broadcast.emit('rawMessage', rawmsg);
         //console.log(rawmsg);
         const auth = new google.auth.GoogleAuth({
-            keyFile: "keys.json",
+            keyFile: googleCreds,
             scopes: scope
         });
         const authClientObject =  auth.getClient();
