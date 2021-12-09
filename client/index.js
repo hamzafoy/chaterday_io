@@ -3,6 +3,9 @@ let socket = io();
 function renderCivilianTime(date) {
     let hour = date.getHours();
     let minute = date.getMinutes();
+    if (minute < 10) {
+        minute = `0${minute}`
+    }
     if (hour > 12) {
         return `${hour - 12}:${minute}PM`;
     } else if (hour < 12) {
