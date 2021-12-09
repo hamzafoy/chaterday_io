@@ -42,5 +42,5 @@ socket.on('message', function(msg) {
 });
 
 socket.on('rawMessage', function(rawmsg) {
-    console.log(rawmsg);
+    
 });
