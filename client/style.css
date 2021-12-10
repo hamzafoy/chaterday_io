@@ -8,17 +8,6 @@ body {
 }
 
 
-/*::::::::::::::::::::::::::::::::::::::::
-::::::::::  Mobile Layout CSS  :::::::::::
-::::::::::::::::::::::::::::::::::::::::*/
-
-
-
-/*::::::::::::::::::::::::::::::::::::::::
-::::::  Desktop/Laptop Layout CSS  :::::::
-::::::::::::::::::::::::::::::::::::::::*/
-
-
 h1, h2, h3, p {
     margin-block-start: 0;
     margin-block-end: 0;
@@ -30,12 +19,45 @@ li {
 }
 
 
+/*::::::::::::::::::::::::::::::::::::::::
+::::::::::  Mobile Layout CSS  :::::::::::
+::::::::::::::::::::::::::::::::::::::::*/
+
+
+
+/*::::::::::::::::::::::::::::::::::::::::
+::::::  Desktop/Laptop Layout CSS  :::::::
+::::::::::::::::::::::::::::::::::::::::*/
+
 #body {
     display: flex;
     flex-direction: column;
     height: 100vh;
     width: 100%;
     background-color: #ECECEA;
+}
+
+
+#chaterday__modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    background-color: #C0DAED;
+    opacity: 0.925;
+}
+
+
+#chaterday__modal h1 {
+    padding-bottom: 2vh;
+    font-family: 'Mohave', sans-serif;
+    font-size: 1.55em;
 }
 
 
@@ -99,34 +121,6 @@ li {
 }
 
 
-#user-input label {
-    font-family: 'Titillium Web', sans-serif;
-}
-
-
-#chaterday__modal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    height: 100%;
-    width: 100%;
-    background-color: #C0DAED;
-    opacity: 0.925;
-}
-
-
-#chaterday__modal h1 {
-    padding-bottom: 2vh;
-    font-family: 'Mohave', sans-serif;
-    font-size: 1.55em;
-}
-
-
 
 /*::::::::::::::::::::::::::::::::::::::::
 ::::::  Desktop/Laptop Layout CSS  :::::::
@@ -134,11 +128,19 @@ li {
 
 @media (min-width: 600px) {
 
+#chaterday__modal h1 {
+    padding-bottom: 2vh;
+    font-family: 'Mohave', sans-serif;
+    font-size: 2.25em;
+}
+
+
 .title__heading {
     font-family: 'Mohave', sans-serif;
     font-size: 2.25rem;
     color: #374243;
 }
+
 
 .title__desc {
     margin: 0 25vw;
@@ -147,17 +149,6 @@ li {
     color: #374243;
 }
 
-#chaterday__modal h1 {
-    padding-bottom: 2vh;
-    font-family: 'Mohave', sans-serif;
-    font-size: 2.25em;
-}
-
-#chaterday__chat-input {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-}
 
 .chatbox__text {
     width: 100%;
@@ -166,5 +157,13 @@ li {
     font-family: 'Mohave', sans-serif;
     font-size: 1.25em;
 }
+
+
+#chaterday__chat-input {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
 
 }
