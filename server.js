@@ -14,7 +14,7 @@ let io = require('socket.io')(server);
 const port = process.env.PORT || 8080;
 const { google } = require('googleapis');
 const scope = 'https://www.googleapis.com/auth/spreadsheets';
-const googleCreds = 'keys.json' || 'gcpconfig.json';
+const googleCreds = /* 'keys.json' || */ 'gcpconfig.json';
 
 
 /*::::::::::::::::::::::::::::::::::::::::
