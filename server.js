@@ -48,14 +48,34 @@ async function readPastMsgs() {
         spreadsheetId,
         range: "Sheet1!A:A"
     })
-    console.log(pastChatMsgs.data.values);
+    //console.log(pastChatMsgs.data.values);
+    let pastChatLogs = await pastChatMsgs.data.values;
+    return pastChatLogs;
 }
+
+app.get('/chat', (req, res) => {
+    let chatLogs = readPastMsgs();
+    //console.log(chatLogs);
+    let chatLogResults = chatLogs.then(function(result) {
+        //console.log(result);
+        let chatLogResult = result;
+        console.log(chatLogResult);
+        res.send( chatLogResult );
+    })
+    //console.log(chatLogResults);
+})
 
 
 io.on('connection', function(socket) {
+
+    /* socket.on('pastMessage', function(data) {
+        socket.push('pastMessage', data);
+    }); */
+
     socket.on('message', function(msg) {
         io.emit('message', msg);
-    })
+    });
+
     socket.on('rawMessage', function(rawmsg) {
         socket.broadcast.emit('rawMessage', rawmsg);
         //console.log(rawmsg);
@@ -66,13 +86,6 @@ io.on('connection', function(socket) {
         const authClientObject =  auth.getClient();
         const googleSheetsInstance = google.sheets({ version: "v4", auth: authClientObject });
         const spreadsheetId = process.env.SPREADSHEET_ID;
-        googleSheetsInstance.spreadsheets.values.get({
-            auth,
-            spreadsheetId,
-            range: "Sheet1!A:A"
-        })
-        readPastMsgs();
-        //console.log(pastChatMsgs);
         googleSheetsInstance.spreadsheets.values.append({
             auth,
             spreadsheetId,

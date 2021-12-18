@@ -13,8 +13,11 @@ function renderCivilianTime(date) {
     }
 }
 
-
 $(function() {
+    
+    $.get("../chat", function(data) {
+        console.log(data);
+    })
 
     let username;
 
@@ -42,8 +45,4 @@ $(function() {
 
 socket.on('message', function(msg) {
     $(msg).hide().appendTo('#chatbox').fadeIn(1000);
-});
-
-socket.on('rawMessage', function(rawmsg) {
-    
 });
