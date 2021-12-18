@@ -14,7 +14,7 @@ let io = require('socket.io')(server);
 const port = process.env.PORT || 8080;
 const { google } = require('googleapis');
 const scope = 'https://www.googleapis.com/auth/spreadsheets';
-const googleCreds = /* 'keys.json' || */ 'gcpconfig.json';
+const googleCreds = 'keys.json' || 'gcpconfig.json';
 
 
 /*::::::::::::::::::::::::::::::::::::::::
@@ -32,7 +32,25 @@ function asyncHandler(cb) {
     }
 }
 
+
 app.use(express.static('client'));
+
+async function readPastMsgs() {
+    const auth = new google.auth.GoogleAuth({
+        keyFile: googleCreds,
+        scopes: scope
+    });
+    const authClientObject = await auth.getClient();
+    const googleSheetsInstance = google.sheets({ version: "v4", auth: authClientObject });
+    const spreadsheetId = process.env.SPREADSHEET_ID;
+    let pastChatMsgs = await googleSheetsInstance.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "Sheet1!A:A"
+    })
+    console.log(pastChatMsgs.data.values);
+}
+
 
 io.on('connection', function(socket) {
     socket.on('message', function(msg) {
@@ -48,7 +66,14 @@ io.on('connection', function(socket) {
         const authClientObject =  auth.getClient();
         const googleSheetsInstance = google.sheets({ version: "v4", auth: authClientObject });
         const spreadsheetId = process.env.SPREADSHEET_ID;
-            googleSheetsInstance.spreadsheets.values.append({
+        googleSheetsInstance.spreadsheets.values.get({
+            auth,
+            spreadsheetId,
+            range: "Sheet1!A:A"
+        })
+        readPastMsgs();
+        //console.log(pastChatMsgs);
+        googleSheetsInstance.spreadsheets.values.append({
             auth,
             spreadsheetId,
             range: "Sheet1!A:A",
