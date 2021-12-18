@@ -17,6 +17,11 @@ $(function() {
     
     $.get("../chat", function(data) {
         console.log(data);
+        data.forEach(element => {
+            console.log(element);
+            let oldMessage = `<li class="chatbox__text">${element}</li>`;
+            $(oldMessage).hide().appendTo('#chatbox').fadeIn(1000);
+        });
     })
 
     let username;

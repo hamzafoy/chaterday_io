@@ -55,14 +55,10 @@ async function readPastMsgs() {
 
 app.get('/chat', (req, res) => {
     let chatLogs = readPastMsgs();
-    //console.log(chatLogs);
-    let chatLogResults = chatLogs.then(function(result) {
-        //console.log(result);
+    chatLogs.then(function(result) {
         let chatLogResult = result;
-        console.log(chatLogResult);
         res.send( chatLogResult );
     })
-    //console.log(chatLogResults);
 })
 
 
