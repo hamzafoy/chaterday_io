@@ -121,6 +121,11 @@ li {
 }
 
 
+#user-input label {
+    font-family: 'Mohave', sans-serif;
+}
+
+
 
 /*::::::::::::::::::::::::::::::::::::::::
 ::::::  Desktop/Laptop Layout CSS  :::::::
