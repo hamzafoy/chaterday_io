@@ -32,6 +32,9 @@ $(function() {
         $(this).parent().remove();
         let chatMsgLabel = `<label for="user-input">${username}, enter your message here:</label>`;
         $(chatMsgLabel).prependTo('#user-input');
+        $('#chatbox').animate({
+            scrollTop: $('#chatbox li').last().offset().top
+        })
     })
 
     $('#user-input').on('submit', function(e) {
@@ -50,4 +53,7 @@ $(function() {
 
 socket.on('message', function(msg) {
     $(msg).hide().appendTo('#chatbox').fadeIn(1000);
+    $('#chatbox').animate({
+        scrollTop: $('#chatbox li').last().offset().top
+    })
 });
