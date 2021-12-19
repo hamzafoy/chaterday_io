@@ -26,7 +26,6 @@ function asyncHandler(cb) {
         try {
         await cb(req, res, next)
         } catch(error){
-        // Forward error to the global error handler
         next(error);
         }
     }
@@ -48,7 +47,6 @@ async function readPastMsgs() {
         spreadsheetId,
         range: "Sheet1!A:A"
     })
-    //console.log(pastChatMsgs.data.values);
     let pastChatLogs = await pastChatMsgs.data.values;
     return pastChatLogs;
 }
@@ -64,17 +62,12 @@ app.get('/chat', (req, res) => {
 
 io.on('connection', function(socket) {
 
-    /* socket.on('pastMessage', function(data) {
-        socket.push('pastMessage', data);
-    }); */
-
     socket.on('message', function(msg) {
         io.emit('message', msg);
     });
 
     socket.on('rawMessage', function(rawmsg) {
         socket.broadcast.emit('rawMessage', rawmsg);
-        //console.log(rawmsg);
         const auth = new google.auth.GoogleAuth({
             keyFile: googleCreds,
             scopes: scope
